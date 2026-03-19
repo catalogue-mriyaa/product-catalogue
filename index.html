@@ -173,6 +173,77 @@ body {
   display: inline-block;
   color: #5e5954;
 }
+
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  /* HEADER STACK */
+  .header {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .logo img {
+    height: 90px;
+    margin: 0 auto;
+  }
+
+  /* TITLE */
+  .center h1 {
+    font-size: 26px;
+  }
+
+  .tagline {
+    font-size: 12px;
+  }
+
+  /* CONTROLS STACK */
+  .controls {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .controls input,
+  .controls select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* TABS SCROLLABLE (IMPORTANT) */
+  .tabs {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 12px 10px;
+    gap: 8px;
+  }
+
+  .tab {
+    flex: 0 0 auto;
+    font-size: 12px;
+    padding: 7px 14px;
+  }
+
+  /* CONTENT PADDING */
+  .container {
+    padding: 30px 15px;
+  }
+
+  /* GRID → 1 COLUMN (clean) */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CARD */
+  .card {
+    padding: 16px;
+  }
+}
 </style>
 </head>
 
