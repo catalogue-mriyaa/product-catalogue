@@ -1,626 +1,553 @@
-<!-- 
-=========================================================================
-MRIYAA CATALOGUE 2026 - EDITING GUIDE
-=========================================================================
-
-1. MAIN TITLE (Product Catalogue 2026)
-   -> Search for: <h1 class="header-title">
-   -> Located in: <header class="new-header"> section (Line ~145)
-
-2. LOGO IMAGE
-   -> Search for: <img src="mriyaa-logo.png"
-   -> Located in: <header class="new-header"> section (Line ~153)
-
-3. PRODUCT DATA (The List of Items)
-   -> Search for: const rawData = [
-   -> Located in: <script> tag at the bottom (Line ~240)
-   -> Add, remove, or edit products here. 
-
-4. CATEGORY COLORS
-   -> Search for: :root {
-   -> Located in: <style> tag (Line ~14)
-
-5. SUBCATEGORY HEADERS FONT
-   -> Search for: .subcategory-title
-   -> Located in: <style> tag (Line ~125)
-
-6. HEADER SPACING & LAYOUT
-   -> Search for: .new-header
-   -> Located in: <style> tag (Line ~55)
-
-=========================================================================
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mriyaa — Product Catalogue 2026</title>
-    
-    <!-- FONTS: Montserrat (UI/Body) + Lora (Headings/Product Names) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Mriyaa — Product Catalogue 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --bg-cream: #F9F7F5;
-            --text-dark: #2C2C2C;
-            --text-subtle: #666;
-            --text-burgundy: #8E234A; 
-            
-            /* Category Colors */
-            --color-face: #BE234A;   
-            --color-body: #556B2F;   
-            --color-hair: #B8860B;   
-            --color-sun: #D2691E;    
-            --color-wellness: #5F9EA0; 
-            
-            --font-ui: 'Montserrat', sans-serif;
-            --font-heading: 'Lora', serif;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
-        body {
-            font-family: var(--font-ui);
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+<style>
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  background: #f7f5f2;
+  color: #1a1a1a;
+  letter-spacing: 0.2px;
+}
 
-        /* --- HEADER --- */
-        .new-header {
-            background-color: #fff;
-            padding: 3rem 5%; 
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
+/* HEADER */
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 25px 50px;
+  background: #f1efec;
+  border-bottom: 1px solid #e8e4df;
+}
 
-        .header-left { flex: 1; min-width: 300px; }
+/* LOGO */
+.logo img {
+  height: 130px;
+  width: auto;
+}
 
-        .header-title {
-            font-family: var(--font-ui); /* Montserrat as per original request */
-            font-size: 3.2rem;
-            line-height: 1.1;
-            margin: 0 0 0.5rem 0;
-            color: var(--text-dark);
-            white-space: nowrap;
-            display: flex;
-            align-items: baseline;
-            gap: 15px;
-        }
+/* TITLE */
+.center {
+  text-align: center;
+}
 
-        .header-title .bold-part { font-weight: 700; }
-        .header-title .light-part { font-weight: 400; color: var(--text-burgundy); }
+.center h1 {
+  font-family: 'Montserrat', serif;
+  font-size: 36px;
+  margin: 0;
+  /*letter-spacing: -0.5px;*/
+}
 
-        .header-tagline {
-            font-size: 0.9rem;
-            color: var(--text-subtle);
-            max-width: 500px;
-            margin-top: 0.5rem;
-        }
+.tagline {
+  font-size: 13px;
+  color: #6e6a66;
+  margin-top: 6px;
+  max-width: 500px;
+  margin-inline: auto;
+}
 
-        .brand-logo { max-height: 150px; width: auto; display: block; }
-        
-        @media (max-width: 768px) {
-            .new-header { flex-direction: column; text-align: center; align-items: center; padding: 1.5rem 5%; }
-            .header-left { width: 100%; }
-            .header-title { justify-content: center; font-size: 2.2rem; flex-wrap: wrap; }
-            .header-tagline { margin: 0.5rem auto 0; }
-        }
+/* CONTROLS */
+.controls {
+  display: flex;
+  gap: 10px;
+ /* align-items: center;*/
+}
 
-        /* --- CONTROLS --- */
-        .controls-container {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            padding: 1.5rem 5%;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-        }
+.controls input {
+  width: 260px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e0dbd5;
+  background: white;
+}
 
-        .search-wrapper { width: 100%; max-width: 500px; position: relative; }
-        .search-input {
-            width: 100%;
-            padding: 12px 15px 12px 40px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: var(--font-ui); /* Montserrat */
-            background: #fff;
-            box-sizing: border-box;
-            font-size: 0.95rem;
-        }
-        .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #999; width: 18px; }
+.controls select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e0dbd5;
+  background: white;
+}
 
-        .filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        .tab-btn {
-            background: transparent;
-            border: 1px solid #ddd;
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-family: var(--font-ui); /* Montserrat */
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-        .tab-btn.active { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 0;
+}
 
-        /* --- CATALOGUE LAYOUT --- */
-        .catalogue-container { max-width: 1200px; margin: 0 auto; padding: 2rem 20px; }
-        .category-section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+.tab {
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: #e9e6e2;
+  font-size: 13px;
+  cursor: pointer;
+ /* transition: 0.2s;*/
+}
 
-        .category-title {
-            font-family: var(--font-ui);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #eee;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .cat-face { color: var(--color-face); border-color: var(--color-face); }
-        .cat-body { color: var(--color-body); border-color: var(--color-body); }
-        .cat-hair { color: var(--color-hair); border-color: var(--color-hair); }
-        .cat-sun { color: var(--color-sun); border-color: var(--color-sun); }
-        .cat-wellness { color: var(--color-wellness); border-color: var(--color-wellness); }
+.tab:hover {
+  background: #dedbd6;
+}
 
-        .subcategory-title {
-            font-family: var(--font-ui); /* Montserrat Regular */
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--text-dark);
-            margin: 1.5rem 0 1rem 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.tabs .tab.active {
+  background: #1a1a1a;
+  color: #ffffff;
+}
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
-        }
+/* CONTENT */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+}
 
-        /* --- CARD STYLING --- */
-        .product-card {
-            background: #fff;
-            border: 1px solid #f0f0f0;
-            border-top: 4px solid transparent;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            box-sizing: border-box;
-            position: relative;
-            cursor: pointer;
-        }
+/* SECTION */
+.section {
+  margin-bottom: 50px;
+}
 
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.02);
-        }
+.section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
 
-        .product-card.card-face:hover { border-top-color: var(--color-face); }
-        .product-card.card-body:hover { border-top-color: var(--color-body); }
-        .product-card.card-hair:hover { border-top-color: var(--color-hair); }
-        .product-card.card-sun:hover { border-top-color: var(--color-sun); }
-        .product-card.card-wellness:hover { border-top-color: var(--color-wellness); }
+.section-desc {
+  font-size: 13px;
+  color: #6e6a66;
+  margin-bottom: 20px;
+}
 
-        /* Subcategory Label inside Card */
-        .p-subcat {
-            font-family: var(--font-ui);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #999;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 18px;
+}
 
-        .p-name {
-            font-family: var(--font-heading); /* Lora Serif for Product Name */
-            font-size: 1.05rem; 
-            font-weight: 600;   
-            margin: 0 0 0.5rem 0;
-            line-height: 1.4;
-            color: var(--text-dark);
-        }
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #f0ede8;
+  transition: 0.25s ease;
+}
 
-        .p-meta {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 1.5rem;
-            font-family: var(--font-ui);
-        }
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
 
-        .p-price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid #f9f9f9;
-        }
+/* PREMIUM HIGHLIGHT */
+.card.premium {
+  border: 1px solid #e2d4bc;
+  background: #fffcf7;
+}
 
-        .p-price {
-            font-family: var(--font-ui);
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-        
-        .p-price-placeholder {
-            font-size: 0.75rem;
-            color: #aaa;
-            text-transform: uppercase;
-        }
+.name {
+  font-size: 14px;
+  line-height: 1.5;
+}
 
-        /* Category Tag with Dynamic Color */
-        .cat-tag {
-            font-family: var(--font-ui);
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            /* Background color will be set via inline style in JS */
-            color: #fff; /* White text for contrast */
-        }
+.price {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #3a3632;
+}
 
-        @media (max-width: 600px) {
-            .product-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-            .product-card { padding: 1rem; }
-            .p-name { font-size: 0.95rem; }
-        }
-        
-        .empty-state { text-align: center; padding: 3rem; color: #888; font-style: italic; }
-    </style>
+/* TAGS */
+.tag {
+  font-size: 10px;
+  background: #f0ede8;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin-top: 6px;
+  margin-right: 4px;
+  display: inline-block;
+  color: #5e5954;
+}
+</style>
 </head>
+
 <body>
 
-<header class="new-header">
-    <div class="header-left">
-        <h1 class="header-title">
-            <span class="bold-part">Product</span>
-            <span class="light-part">Catalogue</span>
-            <span class="bold-part">2026</span>
-        </h1>
-        <p class="header-tagline">Sensorial rituals for the modern woman — nurturing skin, honouring age, and encouraging moments of mindful indulgence.</p>
-    </div>
-    <div class="header-right">
-        <img src="mriyaa-logo.png" alt="Mriyaa Logo" class="brand-logo">
-    </div>
-</header>
+<!-- HEADER -->
+<div class="header">
 
-<div class="controls-container">
-    <div class="search-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search products, ingredients, concerns..." onkeyup="handleSearch()">
+  <div class="logo">
+    <img src="mriyaa-logo.png">
+  </div>
+
+  <div class="center">
+    <h1> Product 
+  <span style="color:#8E234A;">Catalogue</span> 2026</h1>
+    <div class="tagline">
+      A considered collection of formulations designed to nurture skin, honour age,
+      and cultivate moments of mindful care.
     </div>
-    <div class="filter-tabs" id="categoryTabs">
-        <button class="tab-btn active" onclick="filterBy('all')">All</button>
-        <button class="tab-btn" onclick="filterBy('Face Care')">Face Care</button>
-        <button class="tab-btn" onclick="filterBy('Body Care')">Body Care</button>
-        <button class="tab-btn" onclick="filterBy('Hair Care')">Hair Care</button>
-        <button class="tab-btn" onclick="filterBy('Sun Care')">Sun Care</button>
-        <button class="tab-btn" onclick="filterBy('Wellness')">Wellness</button>
-    </div>
+  </div>
+
+  <div class="controls">
+    <input id="search" placeholder="Search">
+
+    <select id="sort">
+      <option value="">Arrange by</option>
+      <option value="low">Price — ascending</option>
+      <option value="high">Price — descending</option>
+    </select>
+
+    <select id="sub"></select>
+
+    <select id="concern">
+      <option value="all">Refine by concern</option>
+      <option value="acne">Acne</option>
+      <option value="pigmentation">Pigmentation</option>
+      <option value="hydration">Hydration</option>
+      <option value="anti_ageing">Anti Ageing</option>
+      <option value="hair_fall">Hair Fall</option>
+    </select>
+  </div>
+
 </div>
 
-<div class="catalogue-container" id="catalogueGrid">
-    <!-- Content injected via JS -->
-</div>
+<div class="tabs" id="tabs"></div>
+
+<div class="container" id="output"></div>
 
 <script>
-    // DATASET FROM DOCX
-    const rawData = [
-        // FACE CARE
-        { name: "Normal Skin Face Wash", category: "Face Care", sub: "Face Wash", size: "200ml", price: 225 },
-        { name: "Oily Skin Face Wash", category: "Face Care", sub: "Face Wash", size: "200ml", price: 265 },
-        { name: "Combination Skin Face Wash", category: "Face Care", sub: "Face Wash", size: "200ml", price: 240 },
-        { name: "Dry Skin Face Wash", category: "Face Care", sub: "Face Wash", size: "200ml", price: 265 },
-        { name: "Acne Prone Face Wash", category: "Face Care", sub: "Face Wash", size: "200ml", concern: ["Acne"], price: 465 },
-        { name: "Probiotic Cleansing Balm", category: "Face Care", sub: "Cleansers", size: "50 gm", price: 625 },
-        { name: "Cleansing Milk", category: "Face Care", sub: "Cleansers", size: "100 ml", price: 210 },
-        { name: "Rose Almond Face Wash (Powder)", category: "Face Care", sub: "Cleansers", size: "100 gm", price: 190 },
-        { name: "Neem Multani Face Wash (Powder)", category: "Face Care", sub: "Cleansers", size: "100 gm", price: 195 },
-        { name: "Geranium Mist", category: "Face Care", sub: "Mist / Toners", size: "100 ml", price: 175 },
-        { name: "Rose Mist", category: "Face Care", sub: "Mist / Toners", size: "100 ml", price: 165 },
-        { name: "Phyto Drop Hydrating Toner", category: "Face Care", sub: "Mist / Toners", size: "100 ml", price: 315 },
-        { name: "Rosehip Serum", category: "Face Care", sub: "Serums (Oil Based)", size: "20 ml", price: 275 },
-        { name: "Anti Pigmentation Serum", category: "Face Care", sub: "Serums (Oil Based)", size: "20 ml", concern: ["Pigmentation"], price: 345 },
-        { name: "Moringa Serum", category: "Face Care", sub: "Serums (Oil Based)", size: "20 ml", price: 325 },
-        { name: "Anti Wrinkle Serum", category: "Face Care", sub: "Serums (Oil Based)", size: "20 ml", concern: ["Anti-Ageing"], price: 345 },
-        { name: "Ferment Oil Serum", category: "Face Care", sub: "Serums (Oil Based)", size: "20 ml", price: 495 },
-        { name: "Phytomucin Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "MicroNutient Skin Renewal Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "Mandelic Acid Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "Gold Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "Dual Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "Phytomucin Deep Hydration Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "Ceramide Petal Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "Ceramide & Vitamin C Brightening Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", concern: ["Pigmentation"], price: null },
-        { name: "Anti Oxidant 10 in 1 Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "20% Vitamin C Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", concern: ["Pigmentation", "Anti-Ageing"], price: null },
-        { name: "Oxy Serum", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", price: null },
-        { name: "Age Sculpt Serum (Instant Botox)", category: "Face Care", sub: "Serums (Non-Oil Based)", size: "30 ml", concern: ["Anti-Ageing"], price: null },
-        { name: "Phytomucin Sleeping Gel Mask", category: "Face Care", sub: "Masks", size: "50 gm", price: null },
-        { name: "Cooling Overnight Sleeping Mask", category: "Face Care", sub: "Masks", size: "50 gm", price: null },
-        { name: "Lumicle Mask", category: "Face Care", sub: "Masks", size: "100 gm", concern: ["Tan"], price: null },
-        { name: "Skin Brightening Creme Gel (Glutathione)", category: "Face Care", sub: "Creams / Gels", size: "50 gm", concern: ["Pigmentation"], price: null },
-        { name: "Retinol Face Crème", category: "Face Care", sub: "Creams / Gels", size: "80 gm", concern: ["Anti-Ageing"], price: null },
-        { name: "Phytomucin Skin Barrier Creme Gel", category: "Face Care", sub: "Creams / Gels", size: "50 gm", price: null },
-        { name: "Oily Skin Copper Peptide Morning Cream", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Oily Skin Probiotic Night Cream", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Kumkumadi Face Cream", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Normal Skin Night Cream", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Multivitamin Cream Gel with SPF 30", category: "Face Care", sub: "Creams / Gels", size: "50 gm", concern: ["Sun Care"], price: null },
-        { name: "Instant Face Lifting & Firming Cream", category: "Face Care", sub: "Creams / Gels", size: "50 gm", concern: ["Anti-Ageing"], price: null },
-        { name: "Dry Skin Night Cream", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Dry Skin Morning Cream", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Double Neck & Chin Firming Cream Gel", category: "Face Care", sub: "Creams / Gels", size: "50 gm", concern: ["Anti-Ageing"], price: null },
-        { name: "Crème De La Shea", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Ceramide Vitamin C (Oil-Free Moisturiser)", category: "Face Care", sub: "Creams / Gels", size: "50 gm", price: null },
-        { name: "Ceramide Souffle Cream Gel", category: "Face Care", sub: "Creams / Gels", size: "50 gm", price: null },
-        { name: "Ceramide Complex 5 in 1 Cream", category: "Face Care", sub: "Creams / Gels", size: "50 gm", price: null },
-        { name: "Astaxanthin Cream Gel", category: "Face Care", sub: "Creams / Gels", size: "50 gm", concern: ["Anti-Ageing"], price: null },
-        { name: "24 Hours Moisturising Cream Gel", category: "Face Care", sub: "Creams / Gels", size: "80 gm", price: null },
-        { name: "Skin Barrier Probiotic Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Red Aloe Vera Soothing Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Plant & Probiotic Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Oxygen Infused Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Hydra Glow Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Cucumber Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Cica Ice Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Anti Aging Gel (Cactus Water)", category: "Face Care", sub: "Gel", size: "100 gm", concern: ["Anti-Ageing"], price: null },
-        { name: "Anti Acne Gel", category: "Face Care", sub: "Gel", size: "100 gm", concern: ["Acne"], price: null },
-        { name: "Aloe Vera with Hyaluronic Acid Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Aloe Vera Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Aloe Vera Carrot Seed Gel", category: "Face Care", sub: "Gel", size: "100 gm", price: null },
-        { name: "Lip Balm (Peppermint, Vanilla, Beetroot, Strawberry, Tinted)", category: "Face Care", sub: "Lip Care", size: "5 gm", price: null },
-        { name: "Lip Augmenta (lip enhancer)", category: "Face Care", sub: "Lip Care", size: "5 ml", price: null },
-        { name: "Lip Oil (Colour Changing)", category: "Face Care", sub: "Lip Care", size: "5 ml", price: null },
-        { name: "Anti Pigmentation Lip Serum", category: "Face Care", sub: "Lip Care", size: "5 ml", concern: ["Pigmentation"], price: null },
-        { name: "Ceramide Eye Cream", category: "Face Care", sub: "Eye Care", size: "20 gm", price: null },
-        { name: "Under Eye Gel (Massage)", category: "Face Care", sub: "Eye Care", size: "20 gm", price: null },
-        { name: "Under Eye Cream", category: "Face Care", sub: "Eye Care", size: "20 gm", price: null },
-        { name: "Mutivitamin Caffeine Under Eye Roll on", category: "Face Care", sub: "Eye Care", size: "15 ml", price: null },
+// 👉 YOUR FULL DATA (unchanged)
+const data =   [
 
-        // BODY CARE
-        { name: "Shower Gel with Jojoba Beads", category: "Body Care", sub: "Shower Gel", size: "200 ml", price: null },
-        { name: "Rose Absolute Shower Gel", category: "Body Care", sub: "Shower Gel", size: "200 ml", price: null },
-        { name: "Lemongrass Shower Gel", category: "Body Care", sub: "Shower Gel", size: "200 ml", price: null },
-        { name: "Blue Paradise Shower Gel", category: "Body Care", sub: "Shower Gel", size: "200 ml", price: null },
-        { name: "Basil Bliss Shower Gel", category: "Body Care", sub: "Shower Gel", size: "200 ml", price: null },
-        { name: "Aloe Olive Shower Gel", category: "Body Care", sub: "Shower Gel", size: "200 ml", price: null },
-        { name: "Tranquil Tides Shower Gel", category: "Body Care", sub: "Shower Gel", size: "200 ml", price: null },
-        { name: "Anti Stress Shower Gel", category: "Body Care", sub: "Shower Gel", size: "200 ml", concern: ["Sleep/Stress"], price: null },
-        { name: "Soaps for Children / Cartoon/ Designer Soaps", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Shea Lavender Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Sandalwood Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Honey Oat Milk Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Glycerine Soaps (Rose, Neem Tulsi, Lemon, Peach, Jasmine, Sunkissed)", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Coconut Milk Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Cocoa Vanilla Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Charcoal Bentonite Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Blue Arctic Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Aloe Calamine Soap", category: "Body Care", sub: "Handmade Soaps", size: "120 gm", price: null },
-        { name: "Body Lotion (Aloe Vera, Cucumber, Gulaab, Narangi, White Oudh, Blushing Petals)", category: "Body Care", sub: "Body Lotions", size: "200 ml", price: null },
-        { name: "Anti Pigmentation Massage Oil", category: "Body Care", sub: "Body Massage Oils", size: "100 ml", concern: ["Pigmentation"], price: null },
-        { name: "Anti Stress Massage Oil", category: "Body Care", sub: "Body Massage Oils", size: "100 ml", concern: ["Sleep/Stress"], price: null },
-        { name: "Apricot Kernel Oil", category: "Body Care", sub: "Body Massage Oils", size: "100 ml", price: null },
-        { name: "Avocado Palmarosa Oil", category: "Body Care", sub: "Body Massage Oils", size: "100 ml", price: null },
-        { name: "Carrot Seed Lavender Oil", category: "Body Care", sub: "Body Massage Oils", size: "100 ml", price: null },
-        { name: "Olive Bergamot (Pain Relief)", category: "Body Care", sub: "Body Massage Oils", size: "100 ml", price: null },
-        { name: "Sweet Almond Ylang Ylang Oil", category: "Body Care", sub: "Body Massage Oils", size: "100 ml", price: null },
-        { name: "Silk Shield (Almond Body Yoghurt with SPF 50)", category: "Body Care", sub: "Body Butter", size: "100 gm", concern: ["Sun Care"], price: null },
-        { name: "Pure Indulgence Body Butter", category: "Body Care", sub: "Body Butter", size: "50 gm", price: null },
-        { name: "Pure Bliss Body Butter", category: "Body Care", sub: "Body Butter", size: "100 gm", price: null },
-        { name: "Opulence Murmuru Brightening Cream with SPF 50", category: "Body Care", sub: "Body Butter", size: "100 gm", concern: ["Sun Care", "Pigmentation"], price: null },
-        { name: "Hand & Body Soothing Salve", category: "Body Care", sub: "Body Butter", size: "100 gm", price: null },
-        { name: "Cashmere Body Butter (Retinol)", category: "Body Care", sub: "Body Butter", size: "100 gm", concern: ["Anti-Ageing"], price: null },
-        { name: "Body Scrub (Chocolate/ Coffee/ Apricot)", category: "Body Care", sub: "Scrubs", size: "175 gm", price: null },
-        { name: "Ubtan (Anti Tan)", category: "Body Care", sub: "Scrubs", size: "100 gm", concern: ["Tan"], price: null },
-        { name: "Ghee Hand & Foot Cream", category: "Body Care", sub: "Hand & Foot Care", size: "50 gm", price: null },
-        { name: "Hand & Foot Cream", category: "Body Care", sub: "Hand & Foot Care", size: "50 gm", price: null },
-        { name: "Foot Soak (Anti Stress, Pain Relief, Detox)", category: "Body Care", sub: "Hand & Foot Care", size: "125 gm", concern: ["Sleep/Stress"], price: null },
-        { name: "Detox Foot Mask Powder", category: "Body Care", sub: "Hand & Foot Care", size: "100 gm", price: null },
-        { name: "Bath Salts (customisable)", category: "Body Care", sub: "Salts", size: "125 gm", price: null },
+// ---------------- FACE CARE ----------------
 
-        // HAIR CARE
-        { name: "Aloe Lavender Shampoo", category: "Hair Care", sub: "Shampoo", size: "200 ml", price: null },
-        { name: "Moisture Lock In Shampoo", category: "Hair Care", sub: "Shampoo", size: "200 ml", price: null },
-        { name: "Neem Tulsi Shampoo (Anti Dandruff)", category: "Hair Care", sub: "Shampoo", size: "200 ml", price: null },
-        { name: "Hair Fall Control Shampoo", category: "Hair Care", sub: "Shampoo", size: "200 ml", concern: ["HairFall"], price: null },
-        { name: "Rosemary Peppermint Shampoo", category: "Hair Care", sub: "Shampoo", size: "200 ml", price: null },
-        { name: "Pea Protein Conditioner", category: "Hair Care", sub: "Conditioner", size: "100 gm", price: null },
-        { name: "Dry Hair Conditioner", category: "Hair Care", sub: "Conditioner", size: "200 ml", price: null },
-        { name: "Dry & Damaged Hair Mask", category: "Hair Care", sub: "Hair Masque/ Pack", size: "100 gm", price: null },
-        { name: "Normal Hair Mask", category: "Hair Care", sub: "Hair Masque/ Pack", size: "100 gm", price: null },
-        { name: "Kesh Aahar Hair Pack", category: "Hair Care", sub: "Hair Masque/ Pack", size: "100 gm", price: null },
-        { name: "Protein Hair Mask", category: "Hair Care", sub: "Hair Masque/ Pack", size: "100 gm", price: null },
-        { name: "Fermented Hair Masque", category: "Hair Care", sub: "Hair Masque/ Pack", size: "100 gm", price: null },
-        { name: "Carrot Argan Leave in Hair Serum", category: "Hair Care", sub: "Leave In Serums", size: "50 ml", price: null },
-        { name: "Anti Frizz Leave in Hair Serum", category: "Hair Care", sub: "Leave In Serums", size: "50 ml", price: null },
-        { name: "Rosemary Hair Serum", category: "Hair Care", sub: "Hair Oil", size: "100 ml", price: null },
-        { name: "The Follicle Drop (Anti Hairfall Shot)", category: "Hair Care", sub: "Hair Oil", size: "20 ml", concern: ["HairFall"], price: null },
-        { name: "Primrose Thyme Hair Oil", category: "Hair Care", sub: "Hair Oil", size: "100 ml", price: null },
+  {"id":"face-fw-001","name":"Normal Skin Face Wash","category":"face","sub":"Face Wash","price":225,"concern":[]},
+  {"id":"face-fw-002","name":"Oily Skin Face Wash","category":"face","sub":"Face Wash","price":265,"concern":[]},
+  {"id":"face-fw-003","name":"Combination Skin Face Wash","category":"face","sub":"Face Wash","price":245,"concern":[]},
+  {"id":"face-fw-004","name":"Dry Skin Face Wash","category":"face","sub":"Face Wash","price":265,"concern":[]},
+  
 
-        // SUN CARE
-        { name: "Mattifying Sunscreen SPF 50", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
-        { name: "Mineral Based Sunscreen SPF 75 PA++++", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
-        { name: "Phytomucin Sunscreen SPF 50 PA++++", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
-        { name: "Sunscreen SPF 50", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
-        { name: "Sunscreen Spray SPF 50 PA++++", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
-        { name: "Sunscreen Spray with Bisabolol", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
-        { name: "Sunscreen Stick", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
-        { name: "Watermelon Sunscreen", category: "Sun Care", sub: "Sunscreen", size: "", price: null },
+  {"id":"face-cl-001","name":"Probiotic Cleansing Balm","category":"face","sub":"Cleanser","price":625,"concern":[]},
+  {"id":"face-cl-002","name":"Cleansing Milk","category":"face","sub":"Cleanser","price":210,"concern":[]},
+  {"id":"face-cl-003","name":"Rose Almond Face Wash (Powder)","category":"face","sub":"Cleanser","price":190,"concern":[]},
+  {"id":"face-cl-004","name":"Neem Multani Face Wash (Powder)","category":"face","sub":"Cleanser","price":195,"concern":[]},
 
-        // CONCERNS (Unique items only)
-        { name: "Snail Mucin Serum", category: "Face Care", sub: "Concern: Acne", size: "", concern: ["Acne"], price: null },
-        { name: "Instant Sebunm Control Serum", category: "Face Care", sub: "Concern: Acne", size: "", concern: ["Acne"], price: null },
-        { name: "Salicylic Face Wash", category: "Face Care", sub: "Concern: Acne", size: "", concern: ["Acne"], price: null },
-        { name: "Azelaic X 10 Serum", category: "Face Care", sub: "Concern: Acne", size: "", concern: ["Acne"], price: null },
-        { name: "Anti Ageing Serum (18 Peptides)", category: "Face Care", sub: "Concern: Anti-Ageing", size: "", concern: ["Anti-Ageing"], price: null },
-        { name: "Instant Botox Serum", category: "Face Care", sub: "Concern: Anti-Ageing", size: "", concern: ["Anti-Ageing"], price: null },
-        { name: "Phytomucin Anti Ageing Cream", category: "Face Care", sub: "Concern: Anti-Ageing", size: "", concern: ["Anti-Ageing"], price: null },
-        { name: "Anti Stretch Mark Cream", category: "Body Care", sub: "Concern: Stretch Mark", size: "", concern: ["Stretch Mark"], price: null },
-        { name: "Anti Cellulite Gel", category: "Body Care", sub: "Concern: Cellulite", size: "", concern: ["Cellulite"], price: null },
-        { name: "Anti Hyper Pigmentation Serum", category: "Face Care", sub: "Concern: Pigmentation", size: "", concern: ["Pigmentation"], price: null },
-        { name: "Anti Melasma Serum", category: "Face Care", sub: "Concern: Pigmentation", size: "", concern: ["Pigmentation"], price: null },
-        { name: "Cell Renew Pro (MNM – Open Pores)", category: "Face Care", sub: "Concern: Open Pores", size: "", concern: ["Open Pores"], price: null },
-        { name: "Hair Filler", category: "Hair Care", sub: "Concern: HairFall", size: "", concern: ["HairFall"], price: null },
-        { name: "Hair Growth Serum", category: "Hair Care", sub: "Concern: HairFall", size: "", concern: ["HairFall"], price: null },
-        { name: "100% Natural Dark Brown Hair Colour", category: "Hair Care", sub: "Concern: Greying", size: "", concern: ["Greying"], price: null },
-        { name: "100% Natural Black Hair Colour", category: "Hair Care", sub: "Concern: Greying", size: "", concern: ["Greying"], price: null },
-        { name: "Sleep Balm", category: "Wellness", sub: "Concern: Sleep/Stress", size: "", concern: ["Sleep/Stress"], price: null },
-        { name: "Chamomile Tea", category: "Wellness", sub: "Concern: Sleep/Stress", size: "", concern: ["Sleep/Stress"], price: null }
-    ];
+  {"id":"face-mt-001","name":"Geranium Mist","category":"face","sub":"Toner","price":175,"concern":[]},
+  {"id":"face-mt-002","name":"Rose Mist","category":"face","sub":"Toner","price":165,"concern":[]},
+  {"id":"face-mt-003","name":"Phyto Drop Hydrating Toner","category":"face","sub":"Toner","price":315,"concern":["hydration"]},
 
-    let currentFilter = 'all';
-    let searchQuery = '';
+  {"id":"face-ser-001","name":"Rosehip Serum","category":"face","sub":"Serum","type":"oil","price":275,"concern":["brightening"]},
+  {"id":"face-ser-002","name":"Anti Pigmentation Serum","category":"face","sub":"Serum","type":"oil","price":345,"concern":["pigmentation"]},
+  {"id":"face-ser-003","name":"Moringa Serum","category":"face","sub":"Serum","type":"oil","price":325,"concern":["hydration"]},
+  {"id":"face-ser-004","name":"Anti Wrinkle Serum","category":"face","sub":"Serum","type":"oil","price":345,"concern":["anti_ageing"]},
+  {"id":"face-ser-005","name":"Ferment Oil Serum","category":"face","sub":"Serum","type":"oil","price":495,"concern":["brightening"]},
 
-    function handleSearch() {
-        searchQuery = document.getElementById('searchInput').value.toLowerCase();
-        renderCatalogue();
-    }
+  {"id":"face-ser-006","name":"Phytomucin Serum","category":"face","sub":"Serum","type":"water","price":745,"concern":["hydration"]},
+  {"id":"face-ser-007","name":"MicroNutrive Skin Renewal Serum","category":"face","sub":"Serum","type":"water","price":995,"concern":["repair"]},
+  {"id":"face-ser-008","name":"Mandelic Acid Serum","category":"face","sub":"Serum","type":"water","price":675,"concern":["acne","pigmentation"]},
+  {"id":"face-ser-009","name":"Gold Serum","category":"face","sub":"Serum","type":"water","price":925,"concern":["brightening","repair"]},
+  {"id":"face-ser-010","name":"Dual Serum","category":"face","sub":"Serum","type":"water","price":725,"concern":["hydration"]},
+  {"id":"face-ser-011","name":"Phytomucin Deep Hydration Serum","category":"face","sub":"Serum","type":"water","price":925,"concern":["hydration"]},
+  {"id":"face-ser-012","name":"Ceramide Petal Serum","category":"face","sub":"Serum","type":"water","price":795,"concern":["barrier_repair"]},
+  {"id":"face-ser-013","name":"Ceramide & Vitamin C Brightening Serum","category":"face","sub":"Serum","type":"water","price":725,"concern":["pigmentation","brightening"]},
+  {"id":"face-ser-014","name":"Anti Oxidant 10 in 1 Serum","category":"face","sub":"Serum","type":"water","price":725,"concern":["protection"]},
+  {"id":"face-ser-015","name":"20% Vitamin C Serum","category":"face","sub":"Serum","type":"water","price":925,"concern":["pigmentation","anti_ageing","brightening"]},
+  {"id":"face-ser-016","name":"Oxy Serum","category":"face","sub":"Serum","type":"water","price":725,"concern":["repair"]},
+  /*{"id":"face-ser-017","name":"Age Sculpt Serum (Instant Botox)","category":"face","sub":"Serum","type":"water","price":975,"concern":["anti_ageing","firming"]},*/
 
-    function filterBy(cat) {
-        currentFilter = cat;
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        renderCatalogue();
-    }
+  {"id":"face-msk-001","name":"Phytomucin Sleeping Gel Mask","category":"face","sub":"Mask","price":625,"concern":["hydration"]},
+  {"id":"face-msk-002","name":"Cooling Overnight Sleeping Mask","category":"face","sub":"Mask","price":625,"concern":["soothing"]},
+  {"id":"face-msk-003","name":"Lumicle Mask","category":"face","sub":"Mask","price":495,"concern":["brightening"]},
 
-    function formatPrice(price) {
-        if (price === null || price === undefined) return '<span class="p-price-placeholder">Price on Request</span>';
-        return '₹' + Number(price).toLocaleString('en-IN');
-    }
+  {"id":"face-crm-001","name":"Skin Brightening Creme Gel (Glutathione)","category":"face","sub":"Cream","price":595,"concern":["pigmentation","brightening"]},
+  {"id":"face-crm-002","name":"Retinol Face Crème","category":"face","sub":"Cream","price":565,"concern":["anti_ageing"]},
+  {"id":"face-crm-003","name":"Phytomucin Skin Barrier Creme Gel","category":"face","sub":"Cream","price":625,"concern":["barrier_repair"]},
+  { id: "face-crm-004","name": "Oily Skin Copper Peptide Morning Cream", "category": "face", "sub": "Cream", "price": 475, "concern":["oil_control"]},
+  { id: "face-crm-005","name": "Oily Skin Probiotic Night Cream", "category": "face", "sub": "Cream", "price": 475, "concern": ["oil_control"] },
+  { id: "face-crm-006","name": "Kumkumadi Face Cream", "category": "face", "sub": "Cream", "price": 425, "concern": ["brightening"] },
+  { id: "face-crm-007","name": "Normal Skin Night Cream", "category": "face", "sub": "Cream", "price": 425, "concern": ["hydration"] },
+  { id: "face-crm-008","name": "Multivitamin Cream Gel with SPF 30", "category": "face", "sub": "Cream", "price": 795, "concern": ["sun_protection", "hydration"] },
+  { id: "face-crm-009","name": "Instant Face Lifting & Firming Cream", "category": "face", "sub": "Cream", "price": 945, "concern": ["firming", "anti_ageing"] },
+  { id: "face-crm-010","name": "Dry Skin Night Cream", "category": "face", "sub": "Cream", "price": 495, "concern": ["hydration"] },
+  { id: "face-crm-011","name": "Dry Skin Morning Cream", "category": "face", "sub": "Cream", "price": 495, "concern": ["hydration"] },
+  { id: "face-crm-012","name": "Double Neck & Chin Firming Cream Gel", "category": "face", "sub": "Cream", "price": 595, "concern": ["firming", "anti_ageing"] },
+  { id: "face-crm-013","name": "Crème De La Shea", "category": "face", "sub": "Cream", "price": 325, "concern": ["hydration"] },
+  { id: "face-crm-014","name": "Ceramide Vitamin C (Oil-Free Moisturiser)", "category": "face", "sub": "Cream", "price": 725, "concern": ["brightening", "hydration"] },
+  { id: "face-crm-015","name": "Ceramide Souffle Cream Gel", "category": "face", "sub": "Cream", "price": 645, "concern": ["hydration"] },
+  { id: "face-crm-016","name": "Ceramide Complex 5 in 1 Cream", "category": "face", "sub": "Cream", "price": 625, "concern": ["barrier_repair"] },
+  { id: "face-crm-017","name": "Astaxanthin Cream Gel", "category": "face", "sub": "Cream", "price": 825, "concern": ["anti_ageing", "protection"] },
+  { id: "face-crm-018","name": "24 Hours Moisturising Cream Gel", "category": "face", "sub": "Cream", "price": 645, "concern": ["hydration"] },
 
-    function getCategoryClassSuffix(cat) {
-        if (cat.includes('Face')) return 'face';
-        if (cat.includes('Body')) return 'body';
-        if (cat.includes('Hair')) return 'hair';
-        if (cat.includes('Sun')) return 'sun';
-        return 'wellness';
-    }
+  {"id":"face-gel-001","name":"Skin Barrier Probiotic Gel","category":"face","sub":"Gel","price":325,"concern":["barrier_repair"]},
+  {"id":"face-gel-002","name":"Red Aloe Vera Soothing Gel","category":"face","sub":"Gel","price":295,"concern":["soothing"]},
+  {"id":"face-gel-003","name":"Plant & Probiotic Gel","category":"face","sub":"Gel","price":325,"concern":["repair"]},
+  {"id":"face-gel-004","name":"Oxygen Infused Gel","category":"face","sub":"Gel","price":325,"concern":["repair"]},
+  {"id":"face-gel-005","name":"Hydra Glow Gel","category":"face","sub":"Gel","price":325,"concern":["hydration","brightening"]},
+  {"id":"face-gel-006","name":"Cucumber Gel","category":"face","sub":"Gel","price":180,"concern":["soothing"]},
+  {"id":"face-gel-007","name":"Cica Ice Gel","category":"face","sub":"Gel","price":325,"concern":["soothing"]},
+  {"id":"face-gel-008","name":"Anti Aging Gel (Cactus Water)","category":"face","sub":"Gel","price":325,"concern":["anti_ageing"]},
+  {"id":"face-gel-009","name":"Anti Acne Gel","category":"face","sub":"Gel","price":325,"concern":["acne"]},
+  {"id":"face-gel-010","name":"Aloe Vera with Hyaluronic Acid Gel","category":"face","sub":"Gel","price":225,"concern":["hydration"]},
+  {"id":"face-gel-011","name":"Aloe Vera Gel","category":"face","sub":"Gel","price":175,"concern":["hydration","soothing"]},
+  {"id":"face-gel-012","name":"Aloe Vera Carrot Seed Gel","category":"face","sub":"Gel","price":190,"concern":["brightening"]},
 
-    function getCategoryColorClass(cat) {
-        if (cat.includes('Face')) return 'cat-face';
-        if (cat.includes('Body')) return 'cat-body';
-        if (cat.includes('Hair')) return 'cat-hair';
-        if (cat.includes('Sun')) return 'cat-sun';
-        return 'cat-wellness';
-    }
-    
-    // Helper to get the actual color value for the tag background
-    function getCategoryColorValue(cat) {
-        if (cat.includes('Face')) return 'var(--color-face)';
-        if (cat.includes('Body')) return 'var(--color-body)';
-        if (cat.includes('Hair')) return 'var(--color-hair)';
-        if (cat.includes('Sun')) return 'var(--color-sun)';
-        return 'var(--color-wellness)';
-    }
+  {"id":"face-lip-001","name":"Lip Balm","category":"face","sub":"Lip Care","price":110,"concern":["hydration"]},
+  {"id":"face-lip-002","name":"Lip Augmenta","category":"face","sub":"Lip Care","price":525,"concern":["plumping"]},
+  {"id":"face-lip-003","name":"Lip Oil","category":"face","sub":"Lip Care","price":220,"concern":["hydration"]},
+  {"id":"face-lip-004","name":"Anti Pigmentation Lip Serum","category":"face","sub":"Lip Care","price":530,"concern":["pigmentation"]},
 
-    function renderCatalogue() {
-        const container = document.getElementById('catalogueGrid');
-        container.innerHTML = '';
+  {"id":"face-eye-001","name":"Ceramide Eye Cream","category":"face","sub":"Eye Care","price":265,"concern":["barrier_repair"]},
+  {"id":"face-eye-002","name":"Under Eye Gel","category":"face","sub":"Eye Care","price":195,"concern":["hydration"]},
+  {"id":"face-eye-003","name":"Under Eye Cream","category":"face","sub":"Eye Care","price":225,"concern":["hydration"]},
+  {"id":"face-eye-004","name":"Multivitamin Caffeine Under Eye Roll On","category":"face","sub":"Eye Care","price":345,"concern":["dark_circles","puffiness"]},
 
-        let filtered = rawData.filter(item => {
-            const matchesCat = currentFilter === 'all' || item.category === currentFilter || (currentFilter === 'Wellness' && item.category === 'Wellness');
-            
-            let matchesSearch = true;
-            if (searchQuery) {
-                const text = (item.name + ' ' + item.sub + ' ' + item.category + ' ' + (item.concern ? item.concern.join(' ') : '')).toLowerCase();
-                matchesSearch = text.includes(searchQuery);
-            }
-            return matchesCat && matchesSearch;
-        });
+  // ---------------- BODY CARE ----------------
 
-        if (filtered.length === 0) {
-            container.innerHTML = '<div class="empty-state">No products found matching your criteria.</div>';
-            return;
-        }
+  {"id":"body-shw-001","name":"Shower Gel with Jojoba Beads","category":"body","sub":"Shower Gel","price":245,"concern":["repair"]},
+  {"id":"body-shw-002","name":"Rose Absolute Shower Gel","category":"body","sub":"Shower Gel","price":245,"concern":["hydration"]},
+  {"id":"body-shw-003","name":"Lemongrass Shower Gel","category":"body","sub":"Shower Gel","price":245,"concern":["hydration"]},
+  {"id":"body-shw-004","name":"Blue Paradise Shower Gel","category":"body","sub":"Shower Gel","price":245,"concern":["hydration"]},
+  {"id":"body-shw-005","name":"Basil Bliss Shower Gel","category":"body","sub":"Shower Gel","price":275,"concern":["hydration"]},
+  {"id":"body-shw-006","name":"Aloe Olive Shower Gel","category":"body","sub":"Shower Gel","price":210,"concern":["soothing"]},
+  {"id":"body-shw-007","name":"Tranquil Tides Shower Gel","category":"body","sub":"Shower Gel","price":275,"concern":["soothing"]},
+  {"id":"body-shw-008","name":"Anti Stress Shower Gel","category":"body","sub":"Shower Gel","price":275,"concern":["soothing"]},
 
-        const grouped = {};
-        filtered.forEach(item => {
-            if (!grouped[item.category]) grouped[item.category] = {};
-            if (!grouped[item.category][item.sub]) grouped[item.category][item.sub] = [];
-            grouped[item.category][item.sub].push(item);
-        });
+  {"id":"body-sop-001","name":"Soaps for Children","category":"body","sub":"Soap","price":null,"concern":["soothing"]},
+  {"id":"body-sop-002","name":"Shea Lavender Soap","category":"body","sub":"Soap","price":110,"concern":["hydration"]},
+  {"id":"body-sop-003","name":"Sandalwood Soap","category":"body","sub":"Soap","price":110,"concern":["soothing"]},
+  {"id":"body-sop-004","name":"Honey Oat Milk Soap","category":"body","sub":"Soap","price":110,"concern":["hydration"]},
+  {"id":"body-sop-005","name":"Glycerine Soaps","category":"body","sub":"Soap","price":100,"concern":["hydration"]},
+  {"id":"body-sop-006","name":"Coconut Milk Soap","category":"body","sub":"Soap","price":110,"concern":["hydration"]},
+  {"id":"body-sop-007","name":"Cocoa Vanilla Soap","category":"body","sub":"Soap","price":110,"concern":["hydration"]},
+  {"id":"body-sop-008","name":"Charcoal Bentonite Soap","category":"body","sub":"Soap","price":110,"concern":["repair"]},
+  {"id":"body-sop-009","name":"Blue Arctic Soap","category":"body","sub":"Soap","price":100,"concern":["soothing"]},
+  {"id":"body-sop-010","name":"Aloe Calamine Soap","category":"body","sub":"Soap","price":110,"concern":["soothing"]},
 
-        Object.keys(grouped).forEach(catName => {
-            const section = document.createElement('div');
-            section.className = 'category-section';
-            
-            const catTitle = document.createElement('div');
-            catTitle.className = `category-title ${getCategoryColorClass(catName)}`;
-            catTitle.textContent = catName;
-            section.appendChild(catTitle);
+  {"id":"body-lot-001","name":"Body Lotion","category":"body","sub":"Lotion","price":365,"concern":["hydration"]},
 
-            const subs = grouped[catName];
-            const cardClassSuffix = getCategoryClassSuffix(catName);
-            const tagColor = getCategoryColorValue(catName);
+  {"id":"body-oil-001","name":"Anti Pigmentation Massage Oil","category":"body","sub":"Body Oil","price":325,"concern":["pigmentation"]},
+  {"id":"body-oil-002","name":"Anti Stress Massage Oil","category":"body","sub":"Body Oil","price":275,"concern":["soothing"]},
+  {"id":"body-oil-003","name":"Apricot Kernel Oil","category":"body","sub":"Body Oil","price":275,"concern":["hydration"]},
+  {"id":"body-oil-004","name":"Avocado Palmarosa Oil","category":"body","sub":"Body Oil","price":345,"concern":["repair"]},
+  {"id":"body-oil-005","name":"Carrot Seed Lavender Oil","category":"body","sub":"Body Oil","price":225,"concern":["repair"]},
+  {"id":"body-oil-006","name":"Olive Bergamot","category":"body","sub":"Body Oil","price":295,"concern":["soothing"]},
+  {"id":"body-oil-007","name":"Sweet Almond Ylang Ylang Oil","category":"body","sub":"Body Oil","price":225,"concern":["hydration"]},
 
-            Object.keys(subs).forEach(subName => {
-                const subTitle = document.createElement('h3');
-                subTitle.className = 'subcategory-title';
-                subTitle.textContent = subName;
-                section.appendChild(subTitle);
+  {"id":"body-but-001","name":"Silk Shield (SPF 50)","category":"body","sub":"Body Butter","price":695,"concern":["sun_protection"]},
+  {"id":"body-but-002","name":"Pure Indulgence Body Butter","category":"body","sub":"Body Butter","price":315,"concern":["hydration"]},
+  {"id":"body-but-003","name":"Pure Bliss Body Butter","category":"body","sub":"Body Butter","price":425,"concern":["hydration"]},
+  {"id":"body-but-004","name":"Opulence Murmuru (SPF 50)","category":"body","sub":"Body Butter","price":725,"concern":["sun_protection","brightening"]},
+  {"id":"body-but-005","name":"Hand & Body Soothing Salve","category":"body","sub":"Body Butter","price":345,"concern":["soothing"]},
+  {"id":"body-but-006","name":"Cashmere Body Butter (Retinol)","category":"body","sub":"Body Butter","price":675,"concern":["anti_ageing","repair"]},
 
-                const grid = document.createElement('div');
-                grid.className = 'product-grid';
+  {"id":"body-scr-001","name":"Body Scrub Coffee","category":"body","sub":"Scrub","price":275,"concern":["repair"]},
+  {"id":"body-scr-002","name":"Body Scrub Chocolate","category":"body","sub":"Scrub","price":290,"concern":["repair"]},
+  {"id":"body-scr-003","name":"Body Scrub Apricot","category":"body","sub":"Scrub","price":325,"concern":["repair"]},
+  {"id":"body-scr-004","name":"Ubtan","category":"body","sub":"Scrub","price":250,"concern":["brightening"]},
 
-                subs[subName].forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = `product-card card-${cardClassSuffix}`;
-                    
-                    const metaText = `${product.size ? product.size : ''}`.trim();
-                    
-                    // UPDATED CARD HTML: Subcategory on top, Category Tag with Color next to price
-                    card.innerHTML = `
-                        <div>
-                            <div class="p-subcat">${product.sub}</div>
-                            <div class="p-name">${product.name}</div>
-                            <div class="p-meta">${metaText}</div>
-                        </div>
-                        <div class="p-price-row">
-                            <div class="p-price">${formatPrice(product.price)}</div>
-                            <div class="cat-tag" style="background-color: ${tagColor}">${product.category.split(' ')[0]}</div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
+  {"id":"body-hf-001","name":"Ghee Hand & Foot Cream","category":"body","sub":"Hand & Foot","price":445,"concern":["hydration"]},
+  {"id":"body-hf-002","name":"Hand & Foot Cream","category":"body","sub":"Hand & Foot","price":395,"concern":["hydration"]},
+  {"id":"body-hf-003","name":"Foot Soak","category":"body","sub":"Hand & Foot","price":250,"concern":["soothing"]},
+  {"id":"body-hf-004","name":"Detox Foot Mask Powder","category":"body","sub":"Hand & Foot","price":325,"concern":["repair"]},
 
-                section.appendChild(grid);
-            });
+  {"id":"body-salt-001","name":"Bath Salts","category":"body","sub":"Bath Salts","price":250,"concern":["soothing"]},
 
-            container.appendChild(section);
-        });
-    }
+  // ---------------- HAIR CARE ----------------
 
-    renderCatalogue();
+  {"id":"hair-shp-001","name":"Aloe Lavender Shampoo","category":"hair","sub":"Shampoo","price":265,"concern":["soothing"]},
+  {"id":"hair-shp-002","name":"Moisture Lock In Shampoo","category":"hair","sub":"Shampoo","price":325,"concern":["hydration"]},
+  {"id":"hair-shp-003","name":"Neem Tulsi Shampoo","category":"hair","sub":"Shampoo","price":230,"concern":["dandruff"]},
+  {"id":"hair-shp-004","name":"Hair Fall Control Shampoo","category":"hair","sub":"Shampoo","price":495,"concern":["hair_fall"]},
+  {"id":"hair-shp-005","name":"Rosemary Peppermint Shampoo","category":"hair","sub":"Shampoo","price":245,"concern":["hair_fall"]},
+  {"id":"hair-shp-005","name":"Coconut Milk Shampoo","category":"hair","sub":"Shampoo","price":395,"concern":["hydration"]},
+
+  {"id":"hair-cond-001","name":"Pea Protein Conditioner","category":"hair","sub":"Conditioner","price":395,"concern":["repair"]},
+  {"id":"hair-cond-002","name":"Dry Hair Conditioner","category":"hair","sub":"Conditioner","price":310,"concern":["hydration"]},
+
+  {"id":"hair-mask-001","name":"Dry & Damaged Hair Mask","category":"hair","sub":"Hair Mask","price":425,"concern":["repair"]},
+  {"id":"hair-mask-002","name":"Normal Hair Mask","category":"hair","sub":"Hair Mask","price":375,"concern":["repair"]},
+  {"id":"hair-mask-003","name":"Kesh Aahar Hair Pack","category":"hair","sub":"Hair Mask","price":250,"concern":["hydration"]},
+  {"id":"hair-mask-004","name":"Protein Hair Mask","category":"hair","sub":"Hair Mask","price":450,"concern":["repair"]},
+  {"id":"hair-mask-005","name":"Fermented Hair Masque","category":"hair","sub":"Hair Mask","price":625,"concern":["hair_fall"]},
+
+  {"id":"hair-ser-001","name":"Carrot Argan Leave In Hair Serum","category":"hair","sub":"Leave-in Serum","price":525,"concern":["protection"]},
+  {"id":"hair-ser-002","name":"Anti Frizz Leave In Hair Serum","category":"hair","sub":"Leave-in Serum","price":495,"concern":["repair"]},
+
+  {"id":"hair-oil-001","name":"Rosemary Hair Serum","category":"hair","sub":"Hair Oil","price":175,"concern":["hair_fall"]},
+  {"id":"hair-oil-002","name":"The Follicle Drop","category":"hair","sub":"Hair Oil","price":325,"concern":["hair_fall"]},
+  {"id":"hair-oil-003","name":"Primrose Thyme Hair Oil","category":"hair","sub":"Hair Oil","price":575,"concern":["hair_fall","hydration"]},
+
+  // ---------------- SUN CARE ----------------
+
+  {"id":"sun-001","name":"Mattifying Sunscreen SPF 50","category":"sun","sub":"Sunscreen","price":495,"concern":["sun_protection","oil_control"]},
+  {"id":"sun-002","name":"Mineral Based Sunscreen SPF 75 PA++++","category":"sun","sub":"Sunscreen","price":825,"concern":["sun_protection"]},
+  {"id":"sun-003","name":"Phytomucin Sunscreen SPF 50 PA++++","category":"sun","sub":"Sunscreen","price":595,"concern":["sun_protection","hydration"]},
+  {"id":"sun-004","name":"Sunscreen SPF 50","category":"sun","sub":"Sunscreen","price":495,"concern":["sun_protection"]},
+  {"id":"sun-005","name":"Sunscreen Spray SPF 50 PA++++","category":"sun","sub":"Sunscreen","price":825,"concern":["sun_protection"]},
+  {"id":"sun-006","name":"Sunscreen Spray with Bisabolol","category":"sun","sub":"Sunscreen","price":695,"concern":["sun_protection","soothing"]},
+  {"id":"sun-007","name":"Sunscreen Stick","category":"sun","sub":"Sunscreen","price":315,"concern":["sun_protection"]},
+  {"id":"sun-008","name":"Watermelon Sunscreen","category":"sun","sub":"Sunscreen","price":495,"concern":["sun_protection","hydration"]},
+
+  // ---------------- CONCERN PRODUCTS ----------------
+
+  {"id":"con-acne-001","name":"Snail Mucin Serum","category":"face","sub":"Serum","price":765,"concern":["acne","repair"]},
+  {"id":"con-acne-002","name":"Instant Sebum Control Serum","category":"face","sub":"Serum","price":925,"concern":["acne","oil_control"]},
+  {"id":"con-acne-003","name":"Salicylic Face Wash","category":"face","sub":"Face Wash","price":465,"concern":["acne"]},
+  {"id":"con-acne-004","name":"Azelaic X 10 Serum","category":"face","sub":"Serum","price":795,"concern":["acne","pigmentation"]},
+
+  {"id":"con-age-001","name":"Anti Ageing Serum (18 Peptides)","category":"face","sub":"Serum","price":825,"concern":["anti_ageing"]},
+  {"id":"con-age-002","name":"Age Sculpt Instant Botox Serum","category":"face","sub":"Serum","price":975,"concern":["anti_ageing","firming"]},
+  {"id":"con-age-003","name":"Phytomucin Anti Ageing Cream","category":"face","sub":"Cream","price":675,"concern":["anti_ageing"]},
+
+  {"id":"con-str-001","name":"Anti Stretch Mark Cream","category":"body","sub":"Cream","price":725,"concern":["repair"]},
+  {"id":"con-cell-001","name":"Anti Cellulite Gel","category":"body","sub":"Gel","price":625,"concern":["repair"]},
+
+  {"id":"con-pig-001","name":"Anti Hyper Pigmentation Serum","category":"face","sub":"Serum","price":975,"concern":["pigmentation"]},
+  {"id":"con-pig-002","name":"Anti Melasma Serum","category":"face","sub":"Serum","price":925,"concern":["pigmentation"]},
+
+  {"id":"con-pore-001","name":"Cell Renew Pro","category":"face","sub":"Serum","price":625,"concern":["repair"]},
+
+  {"id":"con-hair-001","name":"Hair Filler","category":"hair","sub":"Hair Treatment","price":425,"concern":["hair_fall"]},
+  {"id":"con-hair-002","name":"Hair Growth Serum","category":"hair","sub":"Hair Treatment","price":345,"concern":["hair_fall"]},
+
+  {"id":"con-grey-001","name":"Natural Dark Brown Hair Colour","category":"hair","sub":"Hair Colour","price":275,"concern":[]},
+  {"id":"con-grey-002","name":"Natural Black Hair Colour","category":"hair","sub":"Hair Colour","price":275,"concern":[]},
+
+  // ---------------- WELLNESS ----------------
+
+  {"id":"well-001","name":"Sleep Balm","category":"wellness","sub":"Wellness","price":175,"concern":["soothing"]},
+  {"id":"well-002","name":"Chamomile Tea","category":"wellness","sub":"Wellness","price":195,"concern":["soothing"]}
+];
+</script>
+
+<script>
+const tabsEl = document.getElementById("tabs");
+const output = document.getElementById("output");
+
+let state = {
+  category: "all",
+  sub: "all",
+  concern: "all",
+  search: "",
+  sort: ""
+};
+
+/* CATEGORY TABS */
+const categories = ["all", ...new Set(data.map(d => d.category))];
+
+categories.forEach(cat => {
+  const el = document.createElement("div");
+  el.className = "tab";
+  el.innerText = cat.toUpperCase();
+
+  el.onclick = () => {
+  state.category = cat;
+
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  el.classList.add("active");
+
+  updateSub();
+  render();
+};
+
+  if(cat==="all") el.classList.add("active");
+  tabsEl.appendChild(el);
+});
+
+/* CONTROLS */
+document.getElementById("search").oninput = e => {
+  state.search = e.target.value.toLowerCase();
+  render();
+};
+
+document.getElementById("sort").onchange = e => {
+  state.sort = e.target.value;
+  render();
+};
+
+document.getElementById("concern").onchange = e => {
+  state.concern = e.target.value;
+  render();
+};
+
+const subSelect = document.getElementById("sub");
+
+function updateSub(){
+  const subs = ["all", ...new Set(
+    data
+      .filter(p => state.category==="all" || p.category===state.category)
+      .map(p => p.sub)
+  )];
+
+  subSelect.innerHTML = subs.map(s=>`<option value="${s}">${s}</option>`).join("");
+}
+
+subSelect.onchange = e => {
+  state.sub = e.target.value;
+  render();
+};
+
+function render(){
+  let filtered = data.filter(p =>
+    (state.category==="all" || p.category===state.category) &&
+    (state.sub==="all" || p.sub===state.sub) &&
+    (state.concern==="all" || p.concern.includes(state.concern)) &&
+    p.name.toLowerCase().includes(state.search)
+  );
+
+  if(state.sort==="low"){
+    filtered.sort((a,b)=>(a.price??9999)-(b.price??9999));
+  } else if(state.sort==="high"){
+    filtered.sort((a,b)=>(b.price??0)-(a.price??0));
+  }
+
+  const grouped = {};
+
+  filtered.forEach(p=>{
+    if(!grouped[p.sub]) grouped[p.sub]=[];
+    grouped[p.sub].push(p);
+  });
+
+  output.innerHTML="";
+
+  Object.keys(grouped).forEach(sub=>{
+    const section=document.createElement("div");
+    section.className="section";
+    section.innerHTML=`<h3>${sub}</h3>`;
+
+    const grid=document.createElement("div");
+    grid.className="grid";
+
+    grouped[sub].forEach(p=>{
+      const card=document.createElement("div");
+      card.className="card";
+
+      if(p.price && p.price >= 700){
+        card.classList.add("premium");
+      }
+
+      card.innerHTML=`
+        <div class="name">${p.name}</div>
+        <div class="price">${p.price ? "₹"+p.price : "On Request"}</div>
+        <div>${p.concern.map(c=>`<span class="tag">${c}</span>`).join("")}</div>
+      `;
+
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    output.appendChild(section);
+  });
+}
+
+updateSub();
+render();
 </script>
 
 </body>
