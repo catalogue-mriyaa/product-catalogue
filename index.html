@@ -19,7 +19,7 @@ body {
 /* HEADER */
 .header {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 25px 50px;
   background: #f1efec;
@@ -41,22 +41,25 @@ body {
   font-family: 'Montserrat', serif;
   font-size: 36px;
   margin: 0;
-  /*letter-spacing: -0.5px;*/
 }
 
 .tagline {
-  font-size: 13px;
-  color: #6e6a66;
-  margin-top: 6px;
-  max-width: 500px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14.5px;
+  color: #8a847e;
+  margin-top: 10px;
+  max-width: 480px;
   margin-inline: auto;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
 }
 
 /* CONTROLS */
 .controls {
   display: flex;
   gap: 10px;
- /* align-items: center;*/
+  justify-content: flex-end;
 }
 
 .controls input {
@@ -88,7 +91,6 @@ body {
   background: #e9e6e2;
   font-size: 13px;
   cursor: pointer;
- /* transition: 0.2s;*/
 }
 
 .tab:hover {
@@ -202,7 +204,7 @@ body {
     font-size: 12px;
   }
 
-  /* CONTROLS STACK */
+  /* CONTROLS: not sticky in header on mobile — moved to sticky bar */
   .controls {
     flex-direction: column;
     gap: 12px;
@@ -215,7 +217,7 @@ body {
     box-sizing: border-box;
   }
 
-  /* TABS SCROLLABLE (IMPORTANT) */
+  /* TABS SCROLLABLE */
   .tabs {
     overflow-x: auto;
     justify-content: flex-start;
@@ -234,7 +236,7 @@ body {
     padding: 30px 15px;
   }
 
-  /* GRID → 1 COLUMN (clean) */
+  /* GRID → 1 COLUMN */
   .grid {
     grid-template-columns: 1fr;
   }
@@ -243,9 +245,8 @@ body {
   .card {
     padding: 16px;
   }
-}
 
-@media (max-width: 768px) {
+  /* STICKY CONTROLS ON MOBILE */
   .controls {
     position: sticky;
     top: 0;
@@ -254,6 +255,31 @@ body {
     z-index: 10;
     border-bottom: 1px solid #e8e4df;
   }
+}
+.footer {
+  text-align: center;
+  padding: 30px 20px 40px;
+  font-size: 13px;
+  color: #6e6a66;
+  border-top: 1px solid #e8e4df;
+}
+
+.footer p {
+  margin: 0 0 8px;
+}
+
+.footer a {
+  color: #8E234A;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.dot {
+  margin: 0 8px;
+  color: #c5c0bb;
 }
 </style>
 </head>
@@ -271,8 +297,7 @@ body {
     <h1> Product 
   <span style="color:#8E234A;">Catalogue</span> 2026</h1>
     <div class="tagline">
-      A considered collection of formulations designed to nurture skin, honour age,
-      and cultivate moments of mindful care.
+      A considered collection of formulations crafted to nourish skin, honour every stage of life, and transform daily care into moments of quiet intention.
     </div>
   </div>
 
@@ -631,6 +656,12 @@ function render(){
 updateSub();
 render();
 </script>
-
+<!-- For Footer -->
+<div class="footer">
+  <p><b>Say Hello</b></p>
+  <a href="tel:+91-9810965615">+91-9810965615</a>
+  <span class="dot">·</span>
+  <a href="mailto:rajlakshmi@mriyaa.com">rajlakshmi@mriyaa.com</a>
+</div>
 </body>
 </html>
